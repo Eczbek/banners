@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Minecraft Character Banners</title>
+		<style>
+			.color-select {
+				border: none;
+				overflow: hidden;
+			}
+			.color-select option {
+				display: inline-block;
+				cursor: pointer;
+				padding: 0.5em;
+				border: 1px solid #000000;
+				width: 2em;
+				height: 2em;
+			}
+			.cursor-select option:checked {
+				border: 5px solid #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Minecraft Character Banners</h2>
+		Foreground: <select id='fg-select'></select><br/>
+		Background: <select id='bg-select'></select><br/><br/>
+		Click to copy: <button id='get-uppercase'>Uppercase</button> <button id='get-lowercase'>Lowercase</button> <button id='get-symbols-1'>Symbols (1/2)</button> <button id='get-symbols-2'>Symbols (2/2)</button><br/>
+		Paste in a command block.<br/>
+		<br/>
+		<img src='screenshot.png' width='1000px'/>
+		<script>
+			const fg_select = document.querySelector('#fg-select');
+			const bg_select = document.querySelector('#bg-select');
+			const colors = ["white", "light_gray", "gray", "black", "brown", "red", "orange", "yellow", "lime", "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"];
+			for (const color of colors) {
+				const fg_option = document.createElement('option');
+				fg_option.textContent = color;
+				fg_select.appendChild(fg_option);
+				const bg_option = document.createElement('option');
+				bg_option.textContent = color;
+				bg_select.appendChild(bg_option);
+			}
+			document.querySelector('#get-uppercase').addEventListener('click', () => {
+				const fg = colors[fg_select.selectedIndex];
+				const bg = colors[bg_select.selectedIndex];
+				navigator.clipboard.writeText(`/give @p minecraft:${bg}_shulker_box[item_name="Uppercase",container=[
+				{slot:0,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"A",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:1,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"B",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:2,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"C",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:3,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"D",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:4,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"E",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:5,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"F",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:6,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"G",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:7,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"H",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:8,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"I",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:9,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"J",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:10,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"K",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:11,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"L",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:12,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"M",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:triangle_top"},{color:"${bg}",pattern:"minecraft:triangles_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:13,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"N",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:14,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"O",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:15,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"P",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:16,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"Q",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:square_bottom_right"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:17,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"R",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:creeper"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:18,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"S",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:19,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"T",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:20,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"U",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:21,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"V",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:triangle_bottom"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:22,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"W",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:triangle_bottom"},{color:"${bg}",pattern:"minecraft:triangles_bottom"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:23,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"X",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:24,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"Y",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:25,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"Z",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}}]]`);
+				alert('Copied to clipboard!');
+			});
+			document.querySelector('#get-lowercase').addEventListener('click', () => {
+				const fg = colors[fg_select.selectedIndex];
+				const bg = colors[bg_select.selectedIndex];
+				navigator.clipboard.writeText(`/give @p minecraft:${bg}_shulker_box[item_name="Lowercase",container=[
+				{slot:0,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"a",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:cross"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:1,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"b",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:2,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"c",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:3,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"d",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:4,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"e",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:mojang"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:triangles_bottom"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:5,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"f",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_top_right"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:straight_cross"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:6,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"g",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:mojang"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:triangles_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:7,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"h",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:8,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"i",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:9,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"j",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:straight_cross"},{color:"${bg}",pattern:"minecraft:half_vertical"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:10,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"k",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:11,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"l",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_bottom_right"},{color:"${fg}",pattern:"minecraft:square_top_left"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:12,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"m",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:straight_cross"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:13,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"n",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:14,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"o",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:small_stripes"},{color:"${fg}",pattern:"minecraft:triangles_bottom"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:15,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"p",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:mojang"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:16,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"q",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:mojang"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:17,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"r",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:18,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"s",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:mojang"},{color:"${fg}",pattern:"minecraft:square_bottom_right"},{color:"${fg}",pattern:"minecraft:triangles_bottom"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:19,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"t",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:square_bottom_right"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:20,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"u",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:21,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"v",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:stripe_downleft"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:22,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"w",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:triangle_bottom"},{color:"${bg}",pattern:"minecraft:triangles_bottom"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:23,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"x",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:triangle_bottom"},{color:"${fg}",pattern:"minecraft:rhombus"},{color:"${bg}",pattern:"minecraft:triangle_top"},{color:"${bg}",pattern:"minecraft:triangles_bottom"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:24,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"y",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:25,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"z",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:triangles_bottom"},{color:"${fg}",pattern:"minecraft:rhombus"},{color:"${bg}",pattern:"minecraft:diagonal_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}}]]`);
+				alert('Copied to clipboard!');
+			});
+			document.querySelector('#get-symbols-1').addEventListener('click', () => {
+				const fg = colors[fg_select.selectedIndex];
+				const bg = colors[bg_select.selectedIndex];
+				navigator.clipboard.writeText(`/give @p minecraft:${bg}_shulker_box[item_name="Symbols (1/2)",container=[
+				{slot:0,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"1",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_top_left"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:1,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"2",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:2,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"3",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:3,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"4",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:4,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"5",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:5,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"6",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:circle"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:6,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"7",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:7,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"8",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:8,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"9",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:9,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"0",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:10,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"?",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:11,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"!",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:12,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":",",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:13,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":".",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:14,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":":",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:15,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":";",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${fg}",pattern:"minecraft:square_top_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:16,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"\\\"",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:17,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"'",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:diagonal_up_right"},{color:"${bg}",pattern:"minecraft:diagonal_up_left"},{color:"${bg}",pattern:"minecraft:circle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:18,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"+",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:straight_cross"},{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:19,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"-",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:20,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"*",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${fg}",pattern:"minecraft:cross"},{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:21,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"/",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:22,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"%",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_bottom_right"},{color:"${fg}",pattern:"minecraft:square_top_left"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:23,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"&",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:triangles_top"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:mojang"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:24,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"|",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:25,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"^",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:26,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"~",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_downleft"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:border"}]}}}]]`);
+				alert('Copied to clipboard!');
+			});
+			document.querySelector('#get-symbols-2').addEventListener('click', () => {
+				const fg = colors[fg_select.selectedIndex];
+				const bg = colors[bg_select.selectedIndex];
+				navigator.clipboard.writeText(`/give @p minecraft:${bg}_shulker_box[item_name="Symbols (2/2)",container=[
+				{slot:0,item:{id:"minecraft:${fg}_banner",count:1,components:{
+					"minecraft:item_name":"=",
+					"minecraft:banner_patterns":[{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:1,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"<",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:diagonal_left"},{color:"${bg}",pattern:"minecraft:diagonal_up_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:2,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":">",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:diagonal_up_right"},{color:"${bg}",pattern:"minecraft:diagonal_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:3,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"(",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_vertical"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:4,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":")",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_vertical_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:5,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"[",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_bottom_right"},{color:"${fg}",pattern:"minecraft:square_top_right"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:6,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"]",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:square_top_left"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:7,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"{",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:8,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"}",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:9,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"_",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:10,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"@",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:11,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"\\\\",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:12,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"#",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:small_stripes"},{color:"${bg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:piglin"},{color:"${bg}",pattern:"minecraft:border"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:13,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"\`",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:circle"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${bg}",pattern:"minecraft:border"}]}}},
+				{slot:14,item:{id:"minecraft:${bg}_banner",count:1,components:{
+					"minecraft:item_name":"$",
+					"minecraft:banner_patterns":[{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:border"},{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:curly_border"}]}}}]]`);
+				alert('Copied to clipboard!');
+			});
+		</script>
+	</body>
+</html>
