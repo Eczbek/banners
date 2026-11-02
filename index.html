@@ -97,9 +97,9 @@
 				'9': (fg, bg) => [`minecraft:${fg}_banner`, `{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'0': (fg, bg) => [`minecraft:${fg}_banner`, `{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${fg}",pattern:"minecraft:stripe_left"},{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'?': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:half_horizontal_bottom"},{color:"${fg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${fg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}`],
-				'!': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:border"}`],
-				',': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}`],
+				'!': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'.': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:creeper"},{color:"${bg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}`],
+				',': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}`],
 				':': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_bottom"},{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_left"},{color:"${bg}",pattern:"minecraft:stripe_right"},{color:"${bg}",pattern:"minecraft:border"}`],
 				';': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:half_horizontal"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${fg}",pattern:"minecraft:square_top_left"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'\"': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}`],
@@ -112,7 +112,7 @@
 				'&': (fg, bg) => [`minecraft:${fg}_banner`, `{color:"${bg}",pattern:"minecraft:stripe_center"},{color:"${fg}",pattern:"minecraft:triangles_top"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:square_bottom_left"},{color:"${fg}",pattern:"minecraft:mojang"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'|': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_center"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'^': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:rhombus"},{color:"${bg}",pattern:"minecraft:border"}`],
-				'~': (fg, bg) => [`minecraft:${fg}_banner`, `{color:"${bg}",pattern:"minecraft:stripe_downleft"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:border"}`],
+				'~': (fg, bg) => [`minecraft:${fg}_banner`, `{color:"${bg}",pattern:"minecraft:stripe_downleft"},{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${bg}",pattern:"minecraft:curly_border"},{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'=': (fg, bg) => [`minecraft:${fg}_banner`, `{color:"${bg}",pattern:"minecraft:stripe_bottom"},{color:"${bg}",pattern:"minecraft:stripe_top"},{color:"${bg}",pattern:"minecraft:stripe_middle"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'<': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:diagonal_left"},{color:"${bg}",pattern:"minecraft:diagonal_up_left"},{color:"${bg}",pattern:"minecraft:border"}`],
 				'>': (fg, bg) => [`minecraft:${bg}_banner`, `{color:"${fg}",pattern:"minecraft:stripe_downright"},{color:"${fg}",pattern:"minecraft:stripe_downleft"},{color:"${bg}",pattern:"minecraft:diagonal_up_right"},{color:"${bg}",pattern:"minecraft:diagonal_right"},{color:"${bg}",pattern:"minecraft:border"}`],
@@ -161,11 +161,11 @@
 			});
 			make_shulker('#get-uppercase', 'Uppercase', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 			make_shulker('#get-lowercase', 'Lowercase', 'abcdefghijklmnopqrstuvwxyz');
-			make_shulker('#get-symbols-1', 'Symbols (1/2)', '1234567890?!,.:;\"\'+-*/%&|^~');
+			make_shulker('#get-symbols-1', 'Symbols (1/2)', '1234567890?!.,:;\"\'+-*/%&|^~');
 			make_shulker('#get-symbols-2', 'Symbols (2/2)', '=<>()[]{}_@\\#\`$');
 
 			const get_one = document.querySelector('#get-one');
-			for (const c of 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890?!,.:;\"\'+-*/%&|^~=<>()[]{}_@\\#\`$') {
+			for (const c of 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890?!.,:;\"\'+-*/%&|^~=<>()[]{}_@\\#\`$') {
 				const button = document.createElement('button');
 				button.textContent = c;
 				button.addEventListener('click', () => {
